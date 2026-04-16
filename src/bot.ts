@@ -1,7 +1,7 @@
 import { Bot } from 'grammy';
 import { config } from './config.js';
 
-export const bot = new Bot(config.botToken as string);
+export const bot = new Bot(config.botToken);
 
 // Handle the /start command.
 bot.command('start', (ctx) => {
@@ -19,7 +19,7 @@ bot.command('confess', async (ctx) => {
     const confessText = `${messageText}\n\n#Saintekfess`;
 
     try {
-        await ctx.api.sendMessage(config.channelId as string, confessText);
+        await ctx.api.sendMessage(config.channelId, confessText);
         await ctx.reply('Confess kamu berhasil dikirim secara anonim!');
     } catch (error) {
         console.error('Failed to send confess:', error);
